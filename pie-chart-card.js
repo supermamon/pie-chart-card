@@ -1,7 +1,7 @@
 import "https://unpkg.com/chart.js@2.7.1/dist/Chart.bundle.min.js?module";
 import "https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes";
 
-class PowerUsageCard extends HTMLElement {
+class PieChartCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
@@ -92,4 +92,4 @@ class PowerUsageCard extends HTMLElement {
   }
 }
 
-customElements.define('power-usage-card', PowerUsageCard);
+customElements.define('pie-chart-card', PieChartCard);
