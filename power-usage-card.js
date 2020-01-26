@@ -44,9 +44,9 @@ class PowerUsageCard extends HTMLElement {
     var entityData = hassEntities.map(x => x.state);
     card.header = config.title ? config.title : 'Power usage graph';
 
-    if (config.total_power_usage){
-        const totalEntity =  hass.states[config.total_power_usage]
-        const total = (totalEntity.attributes.unit_of_measurement == 'kW') ? totalEntity.state * 1000 : totalEntity.state;
+    if (config.total_amount){
+        const totalEntity =  hass.states[config.total_amount]
+        const total = totalEntity.state;
         const measured = hassEntities.map(x => Number(x.state)).reduce(( accumulator, currentValue ) => accumulator + currentValue,  0);
         entityData.push(total - measured)
         entityNames.push(config.unknownText ? config.unknownText : 'Unknown');
