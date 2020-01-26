@@ -1,6 +1,6 @@
-# Lovelace power usage graph card
+# Lovelace pie chart card
 
-This card will display a doughnut chard that gives insights in your current power usage. 
+This card will display a doughnut chart based on your specified entities. This was based on https://github.com/cheelio/power-usage-card. 
 
 ## Usage
 1. Add plugin .js as a module:
@@ -12,13 +12,13 @@ This card will display a doughnut chard that gives insights in your current powe
 ```
 - type: "custom:power-usage-card"                  # Mandatory
   title: "Actueel stroomverbruik"                  # Optional customized title
-  total_power_usage: sensor.power_consumption      # Optional total power consumption (DSMR) sensor.
+  total_amount: sensor.total_amount                # Optional total value of pie chart.
                                                    # If available then other measured values will be 
                                                    # substracted from total to calculate 'unknown' value.
   unknownText: "Onbekend"                          # Optional customized unknown text. Only applicable
-                                                   # with total_power_usage option enabled.
+                                                   # with total_amount option enabled.
   entities:
-    - entity: sensor.dimmer_kitchen_power          # One or more entities providing Watt (W) measurements
+    - entity: sensor.dimmer_kitchen_power          # One or more entities providing amounts
       name: Keuken                                 # Optional customized name for entity
     - entity: sensor.dimmer_garage_power
       name: Garage
