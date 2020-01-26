@@ -5,12 +5,12 @@ This card will display a doughnut chart based on your specified entities. This w
 ## Usage
 1. Add plugin .js as a module:
 ```
-- url: /local/lovelace-graph-card.js
+- url: /local/pie-chart-card.js
   type: module
 ```
 2. Add lovelace card to view:
 ```
-- type: "custom:power-usage-card"                  # Mandatory
+- type: "custom:pie-chart-card"                    # Mandatory
   title: "Actueel stroomverbruik"                  # Optional customized title
   total_amount: sensor.total_amount                # Optional total value of pie chart.
                                                    # If available then other measured values will be 
