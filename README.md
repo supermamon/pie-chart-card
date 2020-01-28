@@ -6,7 +6,7 @@ This card will display a doughnut chart based on your specified entities. This w
 1. Add plugin .js as a module:
 ```
 - url: /local/pie-chart-card.js
-  type: js
+  type: module
 ```
 2. Add lovelace card to view:
 ```
