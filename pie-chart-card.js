@@ -76,7 +76,7 @@ class PieChartCard extends HTMLElement {
                 display: true
              },
             hover: { mode: 'index' },
-            plugins: {colorschemes: { scheme: 'brewer.Paired12' } }
+            plugins: {colorschemes: { scheme: 'brewer.DarkTwo8' } }
         }
     });
 
