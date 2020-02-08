@@ -3,7 +3,8 @@ import "https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes";
 
 console.info(
   `%cPIE-CHART-CARD\n%cVersion: 0.0.1`,
-  "color: olive; font-weight: bold;",
+  "color: white; background: olive; font-weight: bold;",
+  "color: olive; background: white; font-weight: bold;",
   ""
 );
 
