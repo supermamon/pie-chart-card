@@ -77,7 +77,7 @@ class PieChartCard extends HTMLElement {
   },
        options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false, // https://stackoverflow.com/a/53233861,
             animation: { duration: 0 },
             legend: {
                 position: 'bottom',
