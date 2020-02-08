@@ -41,8 +41,9 @@ class PieChartCard extends HTMLElement {
     const ctx = canvas.getContext('2d');
     const hassEntities = config.entities.map(x => hass.states[x.entity]);
     var entityNames = config.entities.map(x => x.name);
-    var entityData = hassEntities.map(x => x.state);
-    card.header = config.title ? config.title : 'Power usage graph';
+    // If the entity does not exist, default to 0
+    var entityData = hassEntities.map(x => x === undefined ? 0 : x.state);
+    card.header = config.title ? config.title : 'Pie Chart';
 
     if (config.total_amount){
         const totalEntity =  hass.states[config.total_amount]
