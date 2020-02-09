@@ -11,21 +11,20 @@ This card will display a doughnut chart based on your specified entities. This w
 2. Add lovelace card to view:
 ```
 - type: "custom:pie-chart-card"                    # Mandatory
-  title: "Actueel stroomverbruik"                  # Optional customized title
+  title: "Example Pie Chart"                       # Optional customized title
   total_amount: sensor.total_amount                # Optional total value of pie chart.
                                                    # If available then other measured values will be 
                                                    # substracted from total to calculate 'unknown' value.
   unknownText: "Onbekend"                          # Optional customized unknown text. Only applicable
                                                    # with total_amount option enabled.
   entities:
-    - entity: sensor.dimmer_kitchen_power          # One or more entities providing amounts
-      name: Keuken                                 # Optional customized name for entity
-    - entity: sensor.dimmer_garage_power
-      name: Garage
-    - entity: sensor.wall_plug_livingroom_left
-      name: Huiskamer links
-    - entity: sensor.wall_plug_livingroom_tv
-      name: Huiskamer TV
+    - entity: sensor.example_1                     # One or more entities providing amounts
+      name: Slice 1                                # Optional customized name for entity
+    - entity: sensor.example_2
+      name: Slice 4
+    - entity: ssensor.example_3
+      name: Slice 3
+    ...
  ```
 
-![screenshot](https://raw.githubusercontent.com/cheelio/power-usage-card/master/power-usage-card.png)
+![screenshot](https://raw.githubusercontent.com/sdelliot/pie-chart-card/master/pie-chart-card.png)
