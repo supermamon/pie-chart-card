@@ -22,7 +22,7 @@ This card will display a doughnut chart based on your specified entities. This w
       name: Slice 1                                # Optional customized name for entity
     - entity: sensor.example_2
       name: Slice 4
-    - entity: ssensor.example_3
+    - entity: sensor.example_3
       name: Slice 3
     ...
  ```
