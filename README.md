@@ -27,4 +27,4 @@ This card will display a doughnut chart based on your specified entities. This w
     ...
  ```
 
-![screenshot](https://raw.githubusercontent.com/sdelliot/pie-chart-card/master/pie-chart-card.png)
+<img src="https://raw.githubusercontent.com/sdelliot/pie-chart-card/master/pie-chart-card.png" width="500">
