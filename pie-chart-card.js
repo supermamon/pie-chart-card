@@ -47,7 +47,11 @@ class PieChartCard extends HTMLElement {
     const canvas = root.getElementById("cnv");
     const ctx = canvas.getContext('2d');
     const hassEntities = config.entities.map(x => hass.states[x.entity]);
-    var entityNames = config.entities.map(x => x.name);
+    
+    // If a name is not provided, use the friendly_name for the entity. If the friendly_name
+    // does not exist, use the actual entity.
+    var entityNames = config.entities.map(x => x.name !== undefined ? x.name : hass.states[x.entity]["attributes"]["friendly_name"] !== undefined ? hass.states[x.entity]["attributes"]["friendly_name"] : x.entity);
+    
     // If the entity does not exist, default to 0
     var entityData = hassEntities.map(x => x === undefined ? 0 : x.state);
     card.header = config.title ? config.title : 'Pie Chart';
