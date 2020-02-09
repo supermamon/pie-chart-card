@@ -19,9 +19,10 @@ This card will display a doughnut chart based on your specified entities. This w
                                                    # with total_amount option enabled.
   entities:
     - entity: sensor.example_1                     # One or more entities providing amounts
-      name: Slice 1                                # Optional customized name for entity. If this is not provided, 
-                                                   # then the entity friendly_name will be used. If the friendly_name
-                                                   # does not exist, the actual entity will be used.
+      name: Slice 1                                # Optional customized name for entity. If this is 
+                                                   # not provided, then the entity friendly_name will 
+                                                   # be used. If the friendly_name does not exist, 
+                                                   # the actual entity will be used.
     - entity: sensor.example_2
       name: Slice 4
     - entity: sensor.example_3
