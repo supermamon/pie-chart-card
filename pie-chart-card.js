@@ -61,8 +61,8 @@ class PieChartCard extends HTMLElement {
         var total = 0;
         if (totalEntity !== undefined) {
           total = totalEntity.state;
-        } else if (typeof(config.total_amount) === 'number') {
-          total = config.total_amount;
+        } else if (typeof(Number(config.total_amount)) === 'number') {
+          total = Number(config.total_amount);
         } else {
           console.log("ERROR: config.total_amount must be either an entity or number.")
         }
