@@ -12,10 +12,11 @@ This card will display a doughnut chart based on your specified entities. This w
 ```
 - type: "custom:pie-chart-card"                    # Mandatory
   title: "Example Pie Chart"                       # Optional customized title
-  total_amount: sensor.total_amount                # Optional total value of pie chart.
+  total_amount: sensor.total_amount || 10000       # Optional total value of pie chart. This can
+                                                   # be either a sensor or a number.
                                                    # If available then other measured values will be 
                                                    # substracted from total to calculate 'unknown' value.
-  unknownText: "Onbekend"                          # Optional customized unknown text. Only applicable
+  unknownText: "Missing Value"                     # Optional customized unknown text. Only applicable
                                                    # with total_amount option enabled.
   entities:
     - entity: sensor.example_1                     # One or more entities providing amounts
