@@ -58,7 +58,14 @@ class PieChartCard extends HTMLElement {
 
     if (config.total_amount){
         const totalEntity =  hass.states[config.total_amount]
-        const total = totalEntity.state;
+        var total = 0;
+        if (totalEntity !== undefined) {
+          total = totalEntity.state;
+        } else if (typeof(config.total_amount) === 'number') {
+          total = config.total_amount;
+        } else {
+          console.log("ERROR: config.total_amount must be either an entity or number.")
+        }
         const measured = hassEntities.map(x => Number(x.state)).reduce(( accumulator, currentValue ) => accumulator + currentValue,  0);
         entityData.push(total - measured)
         entityNames.push(config.unknownText ? config.unknownText : 'Unknown');
