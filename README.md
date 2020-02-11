@@ -22,7 +22,7 @@ This card will display a doughnut chart based on your specified entities. This w
 ## `Entity` Object
 | Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
-| entity             | `string`                    | none | The entity_id of the entity you want to show.                  |
+| entity             | `string`                    | **Required** | The entity_id of the entity you want to show.                  |
 | name               | `string`                    | `friendly_name` | Name to use for entity. If this is not provided, then the entity `friendly_name` will be used. If the `friendly_name` does not exist, the actual entity_id will be used.                                       |
 
 ## Examples
