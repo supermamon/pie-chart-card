@@ -1,8 +1,9 @@
 import "https://unpkg.com/chart.js@v2.9.3/dist/Chart.bundle.min.js?module";
 import "https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes";
 
+
 console.info(
-  `%cPIE-CHART-CARD\n%cVersion: 0.0.1`,
+  `%cPIE-CHART-CARD\n%cVersion: 0.2.0`,
   "color: white; background: olive; font-weight: bold;",
   "color: olive; background: white; font-weight: bold;",
   ""
@@ -30,8 +31,8 @@ class PieChartCard extends HTMLElement {
     card.id ='ha-card';
     content.id = 'content';
     canvas.id = 'cnv';
-    content.style.height = '480px';
-    canvas.height=480;
+    content.style.height = '380px';
+    canvas.height=380;
     card.appendChild(content);
     card.appendChild(style);
     content.appendChild(canvas);
@@ -71,6 +72,81 @@ class PieChartCard extends HTMLElement {
         entityNames.push(config.unknownText ? config.unknownText : 'Unknown');
     }
 
+    // rotation
+    var rotation = -0.5 * Math.PI
+    if (config.hasOwnProperty('rotation')) {
+      try {
+        var tmpRot = parseFloat(config.rotation)
+        rotation = tmpRot
+      } catch(e) {
+        console.log("ERROR: config.rotation must evaluate to a float.")
+      }
+    }
+
+
+    // circumference
+    var circumference = 2 * Math.PI
+    if (config.hasOwnProperty('circumference')) {
+      try {
+        var tmpCirc = parseFloat(config.circumference)
+        circumference = tmpCirc
+      } catch(e) {
+        console.log("ERROR: config.circumference must be a float.")
+      }
+    }
+
+
+    // hole
+    var cutoutPercentage = 50
+    if (config.hasOwnProperty('cutout_percentage')) {
+      console.log("custom cutout_percentage received")
+      try {
+        var tmpCutout = parseInt(config.cutout_percentage)
+        if (tmpCutout < 0 || tmpCutout > 100) {
+          console.error("cutout_percentage must be an integer value from 0-99")
+        } else {
+          cutoutPercentage = tmpCutout
+        }
+      } catch(e) {
+        console.error("cutout_percentage must be an integer value from 0-99")
+      }
+    }
+
+    // legends
+    var show_legend = true
+    var legend_position = 'bottom'
+
+    if (config.legend) {
+      if (config.legend.hasOwnProperty('position')) {
+        var tmpPos = config.legend.position
+        if (['top','bottom','left','right'].indexOf(tmpPos)>-1) {
+          legend_position = config.legend.position
+        } else {
+          console.error("ERROR: legend.position contains an invalid value")
+        }
+        
+      }
+      var show_legend = !!config.legend.show
+    }
+
+    // animation
+    var animation = {
+      animateRotate: false,
+      duration: 0
+    } 
+    if (config.animation) {
+      if (config.animation.hasOwnProperty('duration')) {
+        try {
+          var tmpDur = parseInt(config.animation.duration)
+          animation.duration = tmpDur
+        } catch(e) {
+          console.error("ERROR: animation.duration must be an integer")
+        }
+      }
+      animation.animateRotate = !!config.animation.animate
+    }
+
+
     const emptyIndexes = entityData.reduce((arr, e, i) => ((e == 0) && arr.push(i), arr), [])
     entityData = entityData.filter((element, index, array) => !emptyIndexes.includes(index));
     entityNames = entityNames.filter((element, index, array) => !emptyIndexes.includes(index));
@@ -83,16 +159,19 @@ class PieChartCard extends HTMLElement {
             data: [],
             borderWidth: 1,
             borderColor:'#00c0ef',
-            label: 'liveCount',
-    }]
-  },
-       options: {
+            label: 'liveCount'
+          }]
+        },
+        options: {
             responsive: true,
+            cutoutPercentage: cutoutPercentage,
+            circumference: circumference,
+            rotation: rotation,
             maintainAspectRatio: false, // https://stackoverflow.com/a/53233861,
-            animation: { duration: 0 },
+            animation: animation,
             legend: {
-                position: 'bottom',
-                display: true
+                position: legend_position,
+                display: show_legend
              },
             hover: { mode: 'index' },
             plugins: {colorschemes: { scheme: 'brewer.DarkTwo8' } },
